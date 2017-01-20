@@ -1,21 +1,25 @@
 {
-    "name": "jeroenhekihenk/webinarjam",
+    "name": "awolacademy/webinarjam",
     "description": "Webinarjam API",
     "license": "MIT",
     "keywords": ["laravel","webinar","webinarjam"],
     "authors": [
-    	{
-    		"name": "Jeroen Venderbosch",
-    		"email": "jeroen@digitusmarketing.nl"
-    	}
+        {
+            "name": "Jeroen Venderbosch",
+            "email": "jeroen@digitusmarketing.nl"
+        },
+        {
+            "name": "Brandon Lis",
+            "email": "knightar@gmail.com"
+        }
     ],
     "minimum-stability": "dev",
     "require": {
         "illuminate/support": "^5.2"
     },
     "autoload": {
-    	"psr-4": {
-    		"Jeroenhekihenk\\Webinarjam\\": "src/"
-    	}
+        "psr-4": {
+            "Awolacademy\\Webinarjam\\": "src/"
+        }
     }
 }

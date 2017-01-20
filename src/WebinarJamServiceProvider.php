@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeroenhekihenk\Webinarjam;
+namespace Awolacademy\Webinarjam;
 
 use App;
 use Illuminate\Support\ServiceProvider;
@@ -17,7 +17,7 @@ class WebinarJamServiceProvider extends ServiceProvider
     }
 
     public function register()
-    {       
+    {
         $this->app->bind('webinarjam', function() {
             return $this->app->make(WebinarJam::class);
         });

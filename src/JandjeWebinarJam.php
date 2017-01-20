@@ -1,5 +1,5 @@
-<?php 
-namespace Jeroenhekihenk\Webinarjam;
+<?php
+namespace Awolacademy\Webinarjam;
 
 class JandjeWebinarJam {
 
@@ -44,7 +44,7 @@ class JandjeWebinarJam {
             curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->verify_ssl);
             curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             switch($http_verb) {
                 case 'getallwebinars':

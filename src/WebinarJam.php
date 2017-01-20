@@ -1,5 +1,5 @@
 <?php
-namespace Jeroenhekihenk\Webinarjam;
+namespace Awolacademy\Webinarjam;
 
 use Exception;
 use Log;
@@ -37,14 +37,6 @@ class WebinarJam
      */
     public function registerToWebinar($webinarId, $name, $email, $schedule)
     {
-        // TODO
-        // TEST TEST TEST TEST TEST
-        // TEST TEST TEST TEST
-        // TEST TEST TEST
-        // TEST TEST
-        // TEST
-
-
         $endpoint = 'register';
 
         $data = [];

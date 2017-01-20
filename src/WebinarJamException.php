@@ -1,5 +1,5 @@
 <?php
-namespace Jeroenhekihenk\Webinarjam;
+namespace Awolacademy\Webinarjam;
 
 use Exception;
 
