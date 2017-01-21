@@ -49,7 +49,7 @@ class WebinarJam
         if(!empty($email)) {
             $data['email'] = $email;
         }
-        if(!empty($schedule)) {
+        if(ctype_digit($schedule)) {
             $data['schedule'] = $schedule;
         }
 
