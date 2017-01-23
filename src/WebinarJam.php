@@ -8,7 +8,7 @@ class WebinarJam
 {
     protected $jandje;
 
-    public function __construct(JandjeWebinarJam $jandje)
+    public function __construct(BaseJandjeJam $jandje)
     {
         $this->jandje = $jandje;
     }
