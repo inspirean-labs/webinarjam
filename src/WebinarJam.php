@@ -25,6 +25,18 @@ class WebinarJam
         return $response;
     }
 
+    /**
+     * Get webinar by ID on your account
+     * @param $webinarId
+     * @throws WebinarJamException
+     */
+    public function getWebinar($webinarId)
+    {
+        $endpoint = 'webinar';
+        $data = array('webinar_id' => $webinarId);
+        $response = $this->callApi('getwebinar', $endpoint, $data);
+        return $response;
+    }
 
     /**
      * Register the person to a webinar

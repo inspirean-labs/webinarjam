@@ -15,6 +15,11 @@ class BaseJandjeJam {
         $this->api_key = $api_key;
     }
 
+    public function getWebinar($method, $args=array(), $timeout=10)
+    {
+        return $this->makeRequest('getwebinar', $method, $args, $timeout);
+    }
+
     public function getAllWebinars($method, $args=array(), $timeout=10)
     {
         return $this->makeRequest('getallwebinars', $method, $args, $timeout);
@@ -46,6 +51,12 @@ class BaseJandjeJam {
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             switch($http_verb) {
+                case 'getwebinar':
+                    $url = $this->endpoint.'/'.$method.'?api_key='.$this->api_key.'&webinar_id='.$args['webinar_id'];
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    break;
+
                 case 'getallwebinars':
                     $url = $this->endpoint.'/'.$method.'?api_key='.$this->api_key;
                     curl_setopt($ch, CURLOPT_URL, $url);
