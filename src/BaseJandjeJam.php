@@ -72,6 +72,20 @@ class BaseJandjeJam {
 
 
             $result = curl_exec($ch);
+
+            if (!curl_errno($ch)) {
+                switch ($http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
+                    case 200:  # OK
+                    break;
+                default:
+                    $info = curl_getinfo($ch);
+                    if (function_exists('log_message')) {
+                        log_message('system', sprintf('WebinarJAM Failure: %s %s', print_r($info, true), print_r($result, true)));
+                    }
+                    throw new WebinarJamException(sprintf('WJAM HTTP Failure: %s', $http_code), $http_code);
+                }
+            }
+
             curl_close($ch);
         } else {
             throw new \Exception("cURL support is required, but can't be found.");
