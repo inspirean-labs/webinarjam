@@ -64,7 +64,7 @@ class BaseJandjeJam {
                     break;
 
                 case 'registertowebinar':
-                    $url = $this->endpoint.'/'.$method.'?api_key='.$this->api_key.'&webinar_id='.$args['webinar_id'].'&name='.$args['name'].'&email='.$args['email'].'&schedule='.$args['schedule'];
+                    $url = $this->endpoint.'/'.$method.'?'.http_build_query(array_merge($args, ['api_key' => $this->api_key]));
                     curl_setopt($ch, CURLOPT_URL, $url);
                     curl_setopt($ch, CURLOPT_POST, true);
                     break;
