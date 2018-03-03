@@ -44,10 +44,11 @@ class WebinarJam
      * @param $name
      * @param $email
      * @param $schedule
+     * @param $timezone
      * @return string
      * @throws WebinarJamException
      */
-    public function registerToWebinar($webinarId, $name, $email, $schedule)
+    public function registerToWebinar($webinarId, $name, $email, $schedule, $timezone = null)
     {
         $endpoint = 'register';
 
@@ -56,13 +57,26 @@ class WebinarJam
             $data['webinar_id'] = $webinarId;
         }
         if(!empty($name)) {
-            $data['name'] = $name;
+            if ($this->jandje instanceof JandjeGenndiEverWebinarJam) {
+                $parts = explode(' ', $name);
+                $name_last = array_pop($parts);
+                $name_first = trim(implode(' ', $parts));
+                $data['first_name'] = $name_first;
+                $data['last_name'] = $name_last;
+            } else {
+                $data['name'] = $name;
+            }
         }
         if(!empty($email)) {
             $data['email'] = $email;
         }
         if(ctype_digit($schedule)) {
             $data['schedule'] = $schedule;
+        }
+        if ($this->jandje instanceof JandjeGenndiEverWebinarJam) {
+            if(!empty($timezone)) {
+                $data['timezone'] = $timezone;
+            }
         }
 
         $response = $this->callApi('registertowebinar', $endpoint, $data);
