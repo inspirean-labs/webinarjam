@@ -59,10 +59,14 @@ class WebinarJam
         if(!empty($name)) {
             if ($this->jandje instanceof JandjeGenndiEverWebinarJam) {
                 $parts = explode(' ', $name);
-                $name_last = array_pop($parts);
-                $name_first = trim(implode(' ', $parts));
-                $data['first_name'] = $name_first;
-                $data['last_name'] = $name_last;
+                if (count($parts) > 1) {
+                    $name_last = array_pop($parts);
+                    $name_first = trim(implode(' ', $parts));
+                    $data['first_name'] = $name_first;
+                    $data['last_name'] = $name_last;
+                } else {
+                    $data['first_name'] = $name;
+                }
             } else {
                 $data['name'] = $name;
             }
