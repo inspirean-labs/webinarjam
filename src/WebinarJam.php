@@ -56,6 +56,7 @@ class WebinarJam
         if(!empty($webinarId)) {
             $data['webinar_id'] = $webinarId;
         }
+        $name = trim($name);
         if(!empty($name)) {
             if ($this->jandje instanceof JandjeGenndiEverWebinarJam) {
                 $parts = explode(' ', $name);
