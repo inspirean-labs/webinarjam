@@ -45,10 +45,12 @@ class WebinarJam
      * @param $email
      * @param $schedule
      * @param $timezone
+     * @param $countryCode
+     * @param $phone
      * @return string
      * @throws WebinarJamException
      */
-    public function registerToWebinar($webinarId, $name, $email, $schedule, $timezone = null)
+    public function registerToWebinar($webinarId, $name, $email, $schedule, $timezone = null,$countryCode = null, $phone = null)
     {
         $endpoint = 'register';
 
@@ -83,6 +85,19 @@ class WebinarJam
                 $data['timezone'] = $timezone;
             }
         }
+
+        if(!empty($countryCode)) {
+            $data['country_code'] = (string)$countryCode;
+        }
+
+        if(!empty($phone)) {
+            $phone = str_replace("(", "", $phone);
+            $phone = str_replace(")", "", $phone);
+            $phone = str_replace("-", "", $phone);
+            $phone = str_replace(" ", "", $phone);
+            $data['phone'] = (string)$phone;
+        }
+
 
         $response = $this->callApi('registertowebinar', $endpoint, $data);
         return $response;
